@@ -1,0 +1,18 @@
+<h2>Lostlist</h2>
+<p>The .table-striped class adds zebra-stripes to a table:</p>            
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Details</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of items | filter:{{status: "LOST"}}">
+      <td>{{item.name}}</td>
+      <td class="text-left">{{item.status}}</td>
+      <td><a [routerLink]="['/detail', item.id]"  class="col-1-4">Details</a></td>
+    </tr>
+  </tbody>
+</table>
