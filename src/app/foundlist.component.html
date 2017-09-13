@@ -1,18 +1,29 @@
-<h2>Lostlist</h2>
-<p>The .table-striped class adds zebra-stripes to a table:</p>            
+<h2>Foundlist</h2>
+<p>The .table-striped class adds zebra-stripes to a table:</p>    
+Sortuj po: dacie, alfabetycznie       
 <table class="table table-striped">
+    <thead>
+        <tr>
+          <th><input type="text" name="name" [(ngModel)]="filter.name" placeholder="name"></th>
+          <th>-</th>
+          <th><input type="text" name="category" [(ngModel)]="filter.category" placeholder="category"></th>
+          <th>-</th>
+        </tr>
+      </thead>
   <thead>
     <tr>
       <th>Name</th>
+      <th>Status</th>
       <th>Category</th>
       <th>Details</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let item of items">
-      <td>{{item.name}}</td>
-      <td class="text-left">{{item.category}}</td>
-      <td><a [routerLink]="['/detail', item.id]"  class="col-1-4">Details</a></td>
+    <tr *ngFor="let item of items | itemfilter:filter ">
+      <td *ngIf = "item.status === 'FOUND'">{{item.name}}</td>
+      <td *ngIf = "item.status === 'FOUND'" class="text-left">{{item.status}}</td>
+      <td *ngIf = "item.status === 'FOUND'" class="text-left">{{item.category}}</td>
+      <td *ngIf = "item.status === 'FOUND'"><a [routerLink]="['/detail', item.id]"  class="col-1-4">Details</a></td>
     </tr>
   </tbody>
 </table>

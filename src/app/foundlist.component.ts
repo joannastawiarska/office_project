@@ -10,8 +10,10 @@ import { Router }            from '@angular/router';
   providers: [ItemService]
 })
 export class FoundListComponent implements OnInit {
+    FOUND_STATUS = 'FOUND';
     items: Item[];
     errorString: string;
+    filter: Item = new Item();
     constructor(private _itemService: ItemService){
     }
 

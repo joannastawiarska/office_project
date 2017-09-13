@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Injectable } from '@angular/core';
 import {ItemService} from './item.service';
 import {Item} from './item';
-import { Router }            from '@angular/router';
 
 @Component({
   selector: 'lost-list',
@@ -9,9 +8,12 @@ import { Router }            from '@angular/router';
   styleUrls: ['./list.component.css'],
   providers: [ItemService]
 })
+@Injectable()
 export class LostListComponent implements OnInit {
+    LOST_STATUS = 'LOST';
     items: Item[];
     errorString: string;
+    filter: Item = new Item();
     constructor(private _itemService: ItemService){
     }
 
@@ -24,6 +26,7 @@ export class LostListComponent implements OnInit {
                       items => this.items = items,
                       error => this.errorString = <any>error
                       );
-    }
-    
+                    }
+
 }
+
