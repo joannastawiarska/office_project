@@ -28,13 +28,4 @@ export class WishListComponent implements OnInit {
                       error => this.errorString = <any>error
                       );
     }
-    
-    createItem(){
-      console.log(this.item);
-      this._itemService.create(this.item).subscribe(
-        data => console.log(this.responseStatus = data),
-        err => console.log(err),
-        () => console.log('Request Completed')
-     ); 
-    }
 }

@@ -1,18 +1,13 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+import {ItemService} from './item.service';
+import {ProfileService} from './profile.service';
 
 @Component({
   selector: 'my-app',
-  template: `
-  <h1>{{title}}</h1>
-  <nav>
-    <a routerLink="/wishlist" routerLinkActive="active">WishList</a>
-    <a routerLink="/foundlist" routerLinkActive="active">FoundList</a>
-    <a routerLink="/lostlist" routerLinkActive="active">LostList</a>
-  </nav>
-  <router-outlet></router-outlet>
-  `
+  templateUrl: `./app.component.html`,
+  styleUrls: ['./app.component.css'],
+  providers: [ItemService, ProfileService]
 })
-export class AppComponent  { 
+export class AppComponent { 
   title = 'LostFound Office';
-
 }

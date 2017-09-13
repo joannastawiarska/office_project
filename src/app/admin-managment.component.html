@@ -1,0 +1,36 @@
+
+Add item:
+
+
+    <button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>
+    
+    <modal #modal [keyboard]="false" [backdrop]="'static'">
+        <modal-header [show-close]="false">
+            <h4 class="modal-title">I'm a modal!</h4>
+        </modal-header>
+        <modal-body>
+            <form>
+                <input [(ngModel)]="item.name" placeholder="name" name="name" />
+                <input [(ngModel)]="item.color" placeholder="color" name="color" />
+                <input [(ngModel)]="item.dateOfAdded" type="date" placeholder="date of added" name="dateOfAdded" />
+                <input [(ngModel)]="item.category" placeholder="category" name="category" />
+                <input [(ngModel)]="item.image" placeholder="imageURL" name="image" />
+                <input [(ngModel)]="item.status" placeholder="status" name="status" />
+                <input [(ngModel)]="item.weight" placeholder="weight" name="weight" />
+                <input type="button" value="Create" (click)="createItem()">
+            </form>
+        </modal-body>
+        <modal-footer [show-default-buttons]="true"></modal-footer>
+    </modal>
+
+
+Add user:
+<form>
+    <input [(ngModel)]="profile.name" placeholder="name" name="name" />
+    <input [(ngModel)]="profile.surname" placeholder="surname" name="surname" />
+    <input [(ngModel)]="profile.phoneNumber" placeholder="phone number" name="phone number" />
+    <input [(ngModel)]="profile.password" placeholder="password" name="password" />
+    <input [(ngModel)]="profile.login" placeholder="login" name="login" />
+    <input [(ngModel)]="profile.email" placeholder="email" name="email" />
+    <input type="button" value="Create" (click)="createProfile()">
+</form>
