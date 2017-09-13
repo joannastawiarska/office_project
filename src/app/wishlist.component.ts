@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import {ItemService} from './item.service';
 import {Item} from './item';
 import { Router }            from '@angular/router';
@@ -12,10 +12,13 @@ import { Router }            from '@angular/router';
 export class WishListComponent implements OnInit {
     items: Item[];
     errorString: string;
+    @Input() item:Item;
+    responseStatus:Object= [];
     constructor(private _itemService: ItemService){
     }
 
     ngOnInit(){
+      this.item = new Item();
     this.getItems();
     }
     getItems(){
@@ -26,4 +29,12 @@ export class WishListComponent implements OnInit {
                       );
     }
     
+    createItem(){
+      console.log(this.item);
+      this._itemService.create(this.item).subscribe(
+        data => console.log(this.responseStatus = data),
+        err => console.log(err),
+        () => console.log('Request Completed')
+     ); 
+    }
 }

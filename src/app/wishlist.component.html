@@ -1,5 +1,15 @@
 <h2>Wishlist</h2>
-<p>The table contain found item, which others need :D  </p>            
+<p>The table contain found item, which others need :D  </p> 
+<form>
+<input [(ngModel)]="item.name" placeholder="name" name="name"/>
+<input [(ngModel)]="item.color" placeholder="color" name="color"/>
+<input [(ngModel)]="item.dateOfAdded" placeholder="date of added" name ="dateOfAdded"/>
+<input [(ngModel)]="item.category" placeholder="category" name ="category"/>
+<input [(ngModel)]="item.image" placeholder="imageURL" name="image"/>
+<input [(ngModel)]="item.status" placeholder="status" name="status"/>
+<input [(ngModel)]="item.weight" placeholder="weight" name="weight"/>
+<input type ="button" value="Create" (click)="createItem()">
+</form>
 <table class="table table-striped">
   <thead>
     <tr>
