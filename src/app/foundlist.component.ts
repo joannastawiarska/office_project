@@ -27,5 +27,4 @@ export class FoundListComponent implements OnInit {
                       error => this.errorString = <any>error
                       );
     }
-    
 }

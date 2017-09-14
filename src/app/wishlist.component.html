@@ -1,19 +1,18 @@
 <h2>Wishlist</h2>
 <p>The table contain found item, which others need :D  </p> 
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th class="text-center">Item's name</th>
-      <th class="text-center">Users</th>
-      <th class="text-center">Details</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let item of items">
-      <td >{{item.name}}</td>
-      <td *ngFor="let profile of item.profiles">{{profile.name}}</td>
-      <td ><a [routerLink]="['/detail', item.id]"  class="col-1-4 text-right">Details</a></td>
-    </tr>
-  </tbody>
-</table>
+
+<form id="form1">
+    <div class="div-table">
+           <div class="div-table-row">
+              <div class="div-table-col" align="center">Item's name</div>
+              <div  class="div-table-col">Users</div>
+              <div  class="div-table-col">Details</div>
+           </div>
+          <div class="div-table-row" *ngFor="let item of items">
+                <div class="div-table-col">{{item.name}}</div>
+              <div class="div-table-col"> <div *ngFor="let profile of item.profiles" >{{profile.name}}</div></div>
+              <div class="div-table-col"><a [routerLink]="['/detail', item.id]">Details</a></div>
+          </div>
+    </div>
+</form>

@@ -1,36 +1,108 @@
+<br /><br /><button type="button" class="btn btn-default" (click)="modal.open()">Add item</button>
 
-Add item:
+<modal #modal [keyboard]="false" [backdrop]="'static'">
+    <modal-header [show-close]="false">
+        <h4 class="modal-title">Add item</h4>
+    </modal-header>
+    <modal-body>
+        <form (ngSubmit)="createItem()" #itemForm="ngForm">
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="item.name" name="name" #name="ngModel" placeholder="name">                Written text: {{item.name}}
+            </div>
+            <div class="form-group">
+                <label for="dateOfAdded">Date of added</label>
+                <input type="date" class="form-control" [(ngModel)]="item.dateOfAdded" name="dateOfAdded" placeholder="date of added">                Written text: {{item.dateOfAdded}}
+            </div>
+            <div class="form-group">
+                <label for="imageURL">Image URL</label>
+                <input type="text" class="form-control" id="imageURL" [(ngModel)]="item.image" name="imageURL" placeholder="imageURL">                Written text: {{item.image}}
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select class="form-control" id="category" required [(ngModel)]="item.category" name="category">
+                                <option *ngFor="let cat of categories" [value]="cat">{{cat}}</option>
+                            </select> Chosen option: {{item.category}}
+            </div>
+            <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" required [(ngModel)]="item.status" name="status">
+                                    <option *ngFor="let stat of status" [value]="stat">{{stat}}</option>
+                                </select> Chosen option: {{item.status}}
+            </div>
+            <div class="form-group">
+                <label for="color">Color</label>
+                <input type="text" class="form-control" id="color" [(ngModel)]="item.color" name="color" placeholder="color" required>                Written text: {{item.color}}
+            </div>
+            <div class="form-group">
+                <label for="weight">Weight</label>
+                <input type="text" class="form-control" id="weight" [(ngModel)]="item.weight" name="weight" placeholder="weight" required>                Written text: {{item.weight}}
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+    </modal-footer>
+</modal>
 
+<button type="button" class="btn btn-default" (click)="modalProfile.open()">Add profile</button>
 
-    <button type="button" class="btn btn-default" (click)="modal.open()">Open me!</button>
-    
-    <modal #modal [keyboard]="false" [backdrop]="'static'">
-        <modal-header [show-close]="false">
-            <h4 class="modal-title">I'm a modal!</h4>
-        </modal-header>
-        <modal-body>
-            <form>
-                <input [(ngModel)]="item.name" placeholder="name" name="name" />
-                <input [(ngModel)]="item.color" placeholder="color" name="color" />
-                <input [(ngModel)]="item.dateOfAdded" type="date" placeholder="date of added" name="dateOfAdded" />
-                <input [(ngModel)]="item.category" placeholder="category" name="category" />
-                <input [(ngModel)]="item.image" placeholder="imageURL" name="image" />
-                <input [(ngModel)]="item.status" placeholder="status" name="status" />
-                <input [(ngModel)]="item.weight" placeholder="weight" name="weight" />
-                <input type="button" value="Create" (click)="createItem()">
-            </form>
-        </modal-body>
-        <modal-footer [show-default-buttons]="true"></modal-footer>
-    </modal>
+<modal #modalProfile [keyboard]="false" [backdrop]="'static'">
+    <modal-header [show-close]="false">
+        <h4 class="modal-title">Add profile</h4>
+    </modal-header>
+    <modal-body>
+        <form (ngSubmit)="createProfile()" #profileForm="ngForm">
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]="profile.name" name="name" #name="ngModel" placeholder="name">                Written text: {{profile.name}}
+            </div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <input type="text" class="form-control" [(ngModel)]="profile.surname" name="surname" placeholder="surname" required>                Written text: {{profile.surname}}
+            </div>
+            <div class="form-group">
+                <label for="phoneNumber">Image URL</label>
+                <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="profile.phoneNumber" name="phoneNumber" placeholder="phone number"
+                    required> Written text: {{profile.phoneNumber}}
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail</label>
+                <input type="text" class="form-control" id="email" [(ngModel)]="profile.email" name="email" placeholder="email" required>                Written text: {{profile.email}}
+            </div>
+            <div class="form-group">
+                <label for="login">Login</label>
+                <input type="text" class="form-control" id="login" [(ngModel)]="profile.login" name="login" placeholder="login" required>                Written text: {{profile.login}}
+            </div>
+            <div class="form-group">
+                <label for="color">Password</label>
+                <input type="text" class="form-control" id="password" [(ngModel)]="profile.password" name="password" placeholder="password"
+                    required> Written text: {{profile.password}}
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Submit</button>
+        </form>
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+    </modal-footer>
+</modal>
 
+<br /><br />
 
-Add user:
-<form>
-    <input [(ngModel)]="profile.name" placeholder="name" name="name" />
-    <input [(ngModel)]="profile.surname" placeholder="surname" name="surname" />
-    <input [(ngModel)]="profile.phoneNumber" placeholder="phone number" name="phone number" />
-    <input [(ngModel)]="profile.password" placeholder="password" name="password" />
-    <input [(ngModel)]="profile.login" placeholder="login" name="login" />
-    <input [(ngModel)]="profile.email" placeholder="email" name="email" />
-    <input type="button" value="Create" (click)="createProfile()">
-</form>
+<button type="button" class="btn btn-default" (click)="modalReturnItem.open()">Return item to owner</button>
+
+<modal #modalReturnItem [keyboard]="false" [backdrop]="'static'">
+    <modal-header [show-close]="false">
+        <h4 class="modal-title">Return item to owner</h4>
+    </modal-header>
+    <modal-body>
+        <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Return to owner</button>
+        
+    </modal-body>
+    <modal-footer>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+    </modal-footer>
+</modal>

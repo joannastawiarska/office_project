@@ -13,7 +13,7 @@ export class LostListComponent implements OnInit {
     LOST_STATUS = 'LOST';
     items: Item[];
     errorString: string;
-    filter: Item = new Item();
+    filter: Item = new Item(); 
     constructor(private _itemService: ItemService){
     }
 

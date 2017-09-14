@@ -18,14 +18,17 @@ export class AdminManagmentComponent implements OnInit {
     @Input() profile:Profile;
     responseStatus:Object= [];
     showDialog = false;
+    date: Date = new Date('2009-01-01');
+    categories = ['OTHER', 'CLOTHING', 'JEWELRY', 'HOME', 'ELECTRONICS', 'SPORTS'];
+    status = ['FOUND', 'LOST'];
     constructor(private _itemService: ItemService, private _profileService: ProfileService){
     }
     ngOnInit(){
+      //this.item = new Item('Sample name', '', 'Sample color', this.date, 'Sample URL', '' , 'Sample weight');
       this.item = new Item();
       this.profile = new Profile();
     }
     createItem(){
-      console.log(this.item);
       this._itemService.create(this.item).subscribe(
         data => console.log(this.responseStatus = data),
         err => console.log(err),
@@ -40,4 +43,5 @@ export class AdminManagmentComponent implements OnInit {
         () => console.log('Request Completed')
      );
     }
+
 }

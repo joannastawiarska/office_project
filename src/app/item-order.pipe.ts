@@ -27,6 +27,30 @@ export class ItemOrderPipe implements PipeTransform {
             }
         });
      }
+     else if
+      (orderParam === 'category'){
+        array.sort((a: Item, b: Item) => {
+            if (a.category < b.category) {
+              return -1;
+            } else if (a.category > b.category) {
+              return 1;
+            } else {
+              return 0;
+            }
+        });
+      }
+        else if
+          (orderParam === 'color'){
+            array.sort((a: Item, b: Item) => {
+                if (a.color < b.color) {
+                  return -1;
+                } else if (a.color > b.color) {
+                  return 1;
+                } else {
+                  return 0;
+                }
+            });
+     }
     return array;
   }
 }
