@@ -7,12 +7,4 @@ export class Item{
     status: string;
     weight: string;
 
-    // constructor (name: string,
-    //     category: string,
-    //     color: string,
-    //     dateOfAdded: Date,
-    //     image: string,
-    //     status: string,
-    //     weight: string,
-    // ){}
 }

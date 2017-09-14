@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {ItemService} from './item.service';
 import {Item} from './item';
-import { Router }            from '@angular/router';
 
 @Component({
   selector: 'wish-list',
@@ -12,8 +11,8 @@ import { Router }            from '@angular/router';
 export class WishListComponent implements OnInit {
     items: Item[];
     errorString: string;
-    @Input() item:Item;
-    responseStatus:Object= [];
+    @Input() item: Item;
+    responseStatus: Object= [];
     constructor(private _itemService: ItemService){
     }
 
