@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http, Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Item } from './item';
-import { Message } from './message';
+import { Message } from '../message/message';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import 'rxjs/add/operator/toPromise';
@@ -13,7 +13,6 @@ export class ItemService {
     private _itemURL = 'http://localhost:8080/detail';
     private _createitemURL = 'http://localhost:8080/create_item';
     private _returnOwnerURL = 'http://localhost:8080/return';
-    //private headers = new Headers({ 'Content-Type': 'application/json' });
     constructor(private http: Http) {
 
     }

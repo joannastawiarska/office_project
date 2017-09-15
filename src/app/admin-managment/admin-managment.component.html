@@ -39,11 +39,12 @@
                 <label for="weight">Weight</label>
                 <input type="text" class="form-control" id="weight" [(ngModel)]="item.weight" name="weight" placeholder="weight" required>                Written text: {{item.weight}}
             </div>
-            <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button>
+            <button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Submit</button><br />
+            <p style="background-color: #7FFF00;"><b>{{returnMsg}}</b></p>
         </form>
     </modal-body>
     <modal-footer>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cleanMessage(); !itemForm.form.reset(); modal.dismiss()">Cancel</button>
     </modal-footer>
 </modal>
 
@@ -82,55 +83,40 @@
                 <input type="text" class="form-control" id="password" [(ngModel)]="profile.password" name="password" placeholder="password"
                     required> Written text: {{profile.password}}
             </div>
-            <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Submit</button>
+            <button type="submit" class="btn btn-success" [disabled]="!profileForm.form.valid">Submit</button><br />
+            <p style="background-color: #7FFF00;"><b>{{returnMsg}}</b></p>
         </form>
     </modal-body>
     <modal-footer>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cleanMessage(); !profileForm.form.reset(); modal.dismiss()">Cancel</button>
     </modal-footer>
 </modal>
 
 <br /><br />
 
+<button type="button" class="btn btn-default" (click)="modalReturnToOwner.open()">Return item to owner</button>
 
-<input type="text" [(ngModel)]="message.itemsId" name="itemsId" placeholder="item's id">
-<input type="text" [(ngModel)]="message.usersLogin" name="usersLogin" placeholder="users login">
-<button (click)="returnToOwner()"> Return</button>
-<!-- <form (ngSubmit)="returnToOwner()" #itemReturnForm="ngForm">
-        {{diagnostic}}
-        <div class="form-group">
-            <label for="name">Item's id</label>
-            <input type="text" class="form-control" id="itemsId" required [(ngModel)]="message.itemsId" name="itemsId" placeholder="item's id">                Written text: {{profile.name}}
-        </div>
-        <div class="form-group">
-            <label for="surname">Owner's login</label>
-            <input type="text" class="form-control" [(ngModel)]="message.usersLogin" name="usersLogin" placeholder="user's login" required>                Written text: {{profile.surname}}
-        </div>
-    </form>
-    <button type="submit" class="btn btn-success" [disabled]="!itemReturnForm.form.valid">Return to owner</button> -->
-
-<!-- <button type="button" class="btn btn-default" (click)="modalReturnItem.open()">Return item to owner</button>
-
-<modal #modalReturnItem [keyboard]="false" [backdrop]="'static'">
+<modal #modalReturnToOwner [keyboard]="false" [backdrop]="'static'">
     <modal-header [show-close]="false">
         <h4 class="modal-title">Return item to owner</h4>
     </modal-header>
     <modal-body>
-            <form (ngSubmit)="returnToOwner()" #itemReturnForm="ngForm">
-                    {{diagnostic}}
-                    <div class="form-group">
-                        <label for="name">Item's id</label>
-                        <input type="text" class="form-control" id="itemsId" required [(ngModel)]="message.itemsId" name="itemsId" placeholder="item's id">                Written text: {{profile.name}}
-                    </div>
-                    <div class="form-group">
-                        <label for="surname">Owner's login</label>
-                        <input type="text" class="form-control" [(ngModel)]="message.usersLogin" name="usersLogin" placeholder="user's login" required>                Written text: {{profile.surname}}
-                    </div>
-                </form>
-        <button type="submit" class="btn btn-success" [disabled]="!itemReturnForm.form.valid">Return to owner</button>
-        
+        <form (ngSubmit)="returnToOwner()" #returnToOwnerForm="ngForm">
+            {{diagnostic}}
+            <div class="form-group">
+                <label for="itemsId">Item's id</label>
+                <input type="text" class="form-control" id="itemsId" required [(ngModel)]="message.itemsId" name="itemsId" placeholder="item's id">                Written text: {{profile.name}}
+            </div>
+            <div class="form-group">
+                <label for="usersLogin">User's login</label>
+                <input type="text" class="form-control" [(ngModel)]="message.usersLogin" name="usersLogin" placeholder="user's login" required>                Written text: {{profile.surname}}
+            </div>
+            <button type="submit" class="btn btn-success" [disabled]="!returnToOwnerForm.form.valid">Submit</button><br /><br />
+            <p style="background-color: #7FFF00;"><b>{{returnMsg}}</b></p>
+            <p style="background-color: #FF4500"><b>{{errorMsg}}</b></p>
+        </form>
     </modal-body>
     <modal-footer>
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="modal.dismiss()">Cancel</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="cleanMessage(); !returnToOwnerForm.form.reset(); modal.dismiss()">Cancel</button>
     </modal-footer>
-</modal> -->
+</modal>

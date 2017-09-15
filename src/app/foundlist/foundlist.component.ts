@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {ItemService} from './item.service';
-import {Item} from './item';
-import { Router }            from '@angular/router';
+import {ItemService} from '../item/item.service';
+import {Item} from '../item/item';
 
 @Component({
   selector: 'found-list',
   templateUrl: './foundlist.component.html',
-  styleUrls: ['./list.component.css'],
+  styleUrls: ['./foundlist.component.css'],
   providers: [ItemService]
 })
 export class FoundListComponent implements OnInit {
@@ -27,4 +26,6 @@ export class FoundListComponent implements OnInit {
                       error => this.errorString = <any>error
                       );
     }
+
+
 }
